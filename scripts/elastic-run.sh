@@ -1,3 +1,8 @@
-rm -r /root/elk/atlantis-elasticsearch/logs/
-mkdir /root/elk/atlantis-elasticsearch/logs
-/root/elk/atlantis-elasticsearch/elasticsearch-1.7.1/bin/elasticsearch -Des.config=/root/elk/atlantis-elasticsearch/config-files/m1/elasticsearch.yml > logs/out.log 2> logs/err.log &
+ESVER="elasticsearch-1.7.1"
+LOGPATH="/var/log/atlantis/elasticsearch"
+ESPATH="/root/elk/atlantis-elasticsearch"
+ESDIR="${ESPATH}/${ESVER}"
+ESCONF="${ESPATH}/config-files/m1"
+
+rm $LOGPATH/*
+$ESPATH/$ESDIR/bin/elasticsearch -Des.config=$ESCONF/elasticsearch.yml > $LOGPATH/out.log 2> $LOGPATH/err.log &TH

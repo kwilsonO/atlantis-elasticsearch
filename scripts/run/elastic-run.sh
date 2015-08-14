@@ -5,4 +5,4 @@ ESDIR="${ESPATH}/${ESVER}"
 ESCONF="${ESPATH}/config-files/m1"
 
 rm $LOGPATH/*
-$ESPATH/$ESDIR/bin/elasticsearch -Des.config=$ESCONF/elasticsearch.yml > $LOGPATH/out.log 2> $LOGPATH/err.log &TH
+$ESDIR/bin/elasticsearch -Des.config=$ESCONF/elasticsearch.yml > $LOGPATH/out.log 2> $LOGPATH/err.log &

@@ -1,0 +1,45 @@
+{
+    "mappings" : {
+      "manager-audit" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+          "cmdID" : {
+            "type" : "string"
+          },
+          "cmdmsg" : {
+            "type" : "string"
+          },
+          "command" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "datetime" : {
+            "type" : "date",
+            "format" : "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd"
+          },
+          "host" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "linetype" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+}

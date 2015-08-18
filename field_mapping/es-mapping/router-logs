@@ -1,0 +1,157 @@
+{
+    "mappings" : {
+      "logs" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+          "accept_date" : {
+            "type" : "string"
+          },
+          "actconn" : {
+            "type" : "long"
+          },
+          "backend_name" : {
+            "type" : "string",
+	    "index" : "not_analyzed"
+          },
+          "backend_queue" : {
+            "type" : "long"
+          },
+          "beconn" : {
+            "type" : "long"
+          },
+          "bytes_read" : {
+            "type" : "long"
+          },
+          "captured_request_cookie" : {
+            "type" : "string"
+          },
+          "captured_request_headers" : {
+            "type" : "string"
+          },
+          "captured_response_cookie" : {
+            "type" : "string"
+          },
+          "captured_response_headers" : {
+            "type" : "string"
+          },
+          "client_ip" : {
+            "type" : "string",
+	    "index" : "not_analyzed"
+          },
+          "client_port" : {
+            "type" : "long"
+          },
+          "feconn" : {
+            "type" : "long"
+          },
+          "frontend_name" : {
+            "type" : "string",
+	    "index" : "not_analyzed"
+          },
+          "haproxy_hour" : {
+            "type" : "string"
+          },
+          "haproxy_milliseconds" : {
+            "type" : "string"
+          },
+          "haproxy_minute" : {
+            "type" : "string"
+          },
+          "haproxy_month" : {
+            "type" : "string"
+          },
+          "haproxy_monthday" : {
+            "type" : "string"
+          },
+          "haproxy_second" : {
+            "type" : "string"
+          },
+          "haproxy_time" : {
+            "type" : "string"
+          },
+          "haproxy_year" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "http_host" : {
+            "type" : "string",
+	    "index" : "not_analyzed"
+          },
+          "http_proto" : {
+            "type" : "string"
+          },
+          "http_request" : {
+            "type" : "string",
+	    "index" : "not_analyzed"
+          },
+          "http_status_code" : {
+            "type" : "long"
+          },
+          "http_verb" : {
+            "type" : "string"
+          },
+          "http_version" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string"
+          },
+          "pid" : {
+            "type" : "string"
+          },
+          "port" : {
+            "type" : "string"
+          },
+          "program" : {
+            "type" : "string"
+          },
+          "retries" : {
+            "type" : "long"
+          },
+          "server_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "srv_queue" : {
+            "type" : "long"
+          },
+          "srvconn" : {
+            "type" : "long"
+          },
+          "syslogprog" : {
+            "type" : "string"
+          },
+          "termination_state" : {
+            "type" : "string"
+          },
+          "time_backend_connect" : {
+            "type" : "long"
+          },
+          "time_backend_response" : {
+            "type" : "long"
+          },
+          "time_duration" : {
+            "type" : "long"
+          },
+          "time_queue" : {
+            "type" : "long"
+          },
+          "time_request" : {
+            "type" : "long"
+          }
+        }
+      }
+    }
+}

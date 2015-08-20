@@ -1,4 +1,9 @@
 {
+
+    "template" : "manager-rpc*",
+    "settings" : {
+        "number_of_shards" : 2
+    },
     "mappings" : {
       "atlantis-manager" : {
         "properties" : {

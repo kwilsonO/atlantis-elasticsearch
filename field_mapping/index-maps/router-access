@@ -1,6 +1,11 @@
 {
+
+    "template" : "router-access*",
+    "settings" : {
+        "number_of_shards" : 2
+    },
     "mappings" : {
-      "logs" : {
+      "atlantis-router" : {
         "properties" : {
           "@timestamp" : {
             "type" : "date",

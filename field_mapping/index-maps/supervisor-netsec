@@ -1,4 +1,9 @@
 {
+
+    "template" : "supervisor-netsec*",
+    "settings" : {
+        "number_of_shards" : 2
+    },
     "mappings" : {
       "atlantis-supervisor" : {
         "properties" : {

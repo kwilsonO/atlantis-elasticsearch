@@ -1,6 +1,6 @@
 ESVER="elasticsearch-1.7.1"
 ESDL="https://download.elastic.co/elasticsearch/elasticsearch/${ESVER}.tar.gz"
-ESPATH="/root/elk/atlantis-elasticsearch"
+ESPATH="/data/elk/atlantis-elasticsearch"
 CONFDIR="${ESPATH}/config-files"
 ESDIR="${ESPATH}/${ESVER}"
 ESCONF="${ESDIR}/config"

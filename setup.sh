@@ -1,5 +1,5 @@
 ESVER="elasticsearch-1.7.1"
-ESPATH="/root/elk/atlantis-elasticsearch"
+ESPATH="/data/elk/atlantis-elasticsearch"
 SCRIPTSDIR="${ESPATH}/scripts"
 SETUPSCRIPTS="${SCRIPTSDIR}/setup"
 

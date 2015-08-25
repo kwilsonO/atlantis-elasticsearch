@@ -1,6 +1,6 @@
 ESVER="elasticsearch-1.7.1"
 LOGPATH="/var/log/atlantis/elasticsearch"
-ESPATH="/root/elk/atlantis-elasticsearch"
+ESPATH="/data/elk/atlantis-elasticsearch"
 ESDIR="${ESPATH}/${ESVER}"
 ESCONF="${ESPATH}/config-files/m1"
 

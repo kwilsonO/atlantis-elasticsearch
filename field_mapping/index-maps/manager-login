@@ -2,7 +2,15 @@
 
     "template" : "manager-login*",
     "settings" : {
-        "number_of_shards" : 2
+        "number_of_shards" : 2,
+        "analysis" : {
+                "analyzer" : {
+                        "secgroup" : {
+                                "type" : "pattern",
+                                "pattern": ":+"
+                        }
+                }
+        }
     },
     "mappings" : {
       "atlantis-manager" : {
@@ -31,6 +39,42 @@
           "host" : {
             "type" : "string",
             "index" : "not_analyzed"
+          },
+          "host-full-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-inst-id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-inst-type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-local-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-local-ipv4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-mac-addr" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-pub-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-pub-ipv4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-sec-groups" : {
+            "type" : "string",
+            "analyzer" : "secgroup"
           },
           "linetype" : {
             "type" : "string"

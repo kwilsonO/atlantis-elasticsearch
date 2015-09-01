@@ -1,0 +1,49 @@
+{
+
+    "template" : "container*",
+    "settings" : {
+        "number_of_shards" : 2
+    },
+    "mappings" : {
+      "atlantis-container" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+	  "container-name" : {
+	    "type" : "string",
+            "index" : "not_analyzed"
+	  },
+          "app-instance-name" : {
+	    "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "out_type" : {
+	   "type" : "string",
+           "index" : "not_analyzed"
+          },
+          "container-log-type" : {
+	   "type" : "string",
+           "index" : "not_analyzed"
+          },
+          "host" : {
+            "type" : "string",
+	    "index" : "not_analyzed"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+}

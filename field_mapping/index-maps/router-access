@@ -2,7 +2,15 @@
 
     "template" : "router-access*",
     "settings" : {
-        "number_of_shards" : 2
+        "number_of_shards" : 2,
+	"analysis" : {
+		"analyzer" : {
+			"secgroup" : {
+				"type" : "pattern",
+				"pattern": ":+"
+			}
+		}
+	}
     },
     "mappings" : {
       "atlantis-router" : {
@@ -87,6 +95,42 @@
             "type" : "string",
             "index" : "not_analyzed"
           },
+	  "host-full-hostname" : {
+	    "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-inst-id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-inst-type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-local-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-local-ipv4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-mac-addr" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-pub-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-pub-ipv4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-sec-groups" : {
+            "type" : "string",
+	    "analyzer" : "secgroup"
+          },
           "http_host" : {
             "type" : "string",
 	    "index" : "not_analyzed"
@@ -110,11 +154,11 @@
           "message" : {
             "type" : "string"
           },
- 	  "ooyala_request_id" : {
+ 	  "ooyala-request-id" : {
 	    "type" : "string",
             "index" : "not_analyzed"
 	  },
-	  "ooyala_server_id" : {
+	  "ooyala-server-id" : {
 	    "type" : "string",
             "index" : "not_analyzed"
 	  },

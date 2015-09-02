@@ -1,0 +1,108 @@
+{
+
+    "template" : "supervisor-usage*",
+    "settings" : {
+        "number_of_shards" : 2,
+        "analysis" : {
+                "analyzer" : {
+                        "secgroup" : {
+                                "type" : "pattern",
+                                "pattern": ":+"
+                        }
+                }
+        }
+    },
+    "mappings" : {
+      "atlantis-supervisor-usage-info" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+	"containers-total" : {
+            "type" : "long"
+          },
+	"containers-used" : {
+            "type" : "long"
+          },
+          "cpu-shares-total" : {
+            "type" : "long"
+          },
+          "cpu-shares-used" : {
+            "type" : "long"
+          },
+          "host" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-full-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-inst-id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-inst-type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-local-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-local-ipv4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-mac-addr" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-pub-hostname" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-pub-ipv4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "host-sec-groups" : {
+            "type" : "string",
+            "analyzer" : "secgroup"
+          },
+	  "mem-total" : {
+            "type" : "long"
+          },
+          "mem-used" : {
+            "type" : "long"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string"
+          },
+	  "supervisor-hostname" : {
+	   "type" : "string",
+           "index" : "not_analyzed"
+	  },
+	  "total-price" : {
+            "type" : "long"
+          },
+          "type" : {
+            "type" : "string"
+          },
+	  "used-cpu-price" : {
+            "type" : "long"
+          },
+	  "used-mem-price" : {
+            "type" : "long"
+          }
+        }
+      }
+    }
+}

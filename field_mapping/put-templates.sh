@@ -1,5 +1,5 @@
-HOST="$(cat ~/tstflt-alias/devbox1)"
-MAPJSONDIR="/Users/kwilson/work/ooyala/ELK/atlantis-elasticsearch-repos/atlantis-elasticsearch/field_mapping/index-maps"
+HOST="localhost"
+MAPJSONDIR="/data/elk/atlantis-elasticsearch/field_mapping/index-maps"
 
 
 for f in $MAPJSONDIR/*; do

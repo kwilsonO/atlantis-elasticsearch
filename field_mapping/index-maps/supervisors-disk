@@ -2,7 +2,7 @@
 
     "template" : "supervisors-disk",
     "settings" : {
-        "number_of_shards" : 2
+        "number_of_shards" : 2,
                 "analyzer" : {
                         "secgroup" : {
                                 "type" : "pattern",

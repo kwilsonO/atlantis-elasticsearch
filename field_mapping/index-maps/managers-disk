@@ -3,6 +3,7 @@
     "template" : "managers-disk",
     "settings" : {
         "number_of_shards" : 2,
+	"analysis" : {
                 "analyzer" : {
                         "secgroup" : {
                                 "type" : "pattern",
@@ -19,9 +20,6 @@
             "format" : "dateOptionalTime"
           },
           "@version" : {
-            "type" : "string"
-          },
-          "cmdtype" : {
             "type" : "string"
           },
           "datetime" : {

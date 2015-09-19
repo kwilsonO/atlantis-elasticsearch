@@ -1,7 +1,123 @@
-ESVER="elasticsearch-1.7.1"
-ESPATH="/data/elk/atlantis-elasticsearch"
-SCRIPTSDIR="${ESPATH}/scripts"
-SETUPSCRIPTS="${SCRIPTSDIR}/setup"
+CONF_FILE_PATH="atlantis.config"
+REPO_NAME="atlantis-logstash"
+
+
+usage()
+{
+
+cat <<-EOF
+	usage: $0 options
+	
+	This script builds a config file with the passed info sets up elastic search.
+
+	Options:
+		Default:
+		-R	The region this elastic search node will service (us-east-1, eu-west-1, etc)
+		-n	The node name of this node (usually master{1..3})
+		
+		Additional:
+		-p	The path to the elasticsearch install (default /data/atlantis/elasticserach)
+		-o	The path for elasticsearch to log to (default /var/log/atlantis/elasticsearch)	
+		-v	The elastic search version to install (default 1.7.1)
+		-u	ES download url(def: download.elastic.co/elasticsearch/elasticsearch/elasticsearch-\${ES_VERSION}.tar.gz)
+
+		Non-Config Related:
+		-b	Build config but don't start setup
+		-h	Show this message
+		
+	EOF
+}
+
+
+if [ $# -ne 0]; then
+	OPTREGION=""
+	OPTNAME=""
+	OPTPATH=""
+	OPTLOGPATH=""
+	OPTVERSION=""
+	OPTDLURL=""
+	OPTBUILDONLY=""
+
+	while getopts R:n:p:o:v:u:bh opt; do
+		#if non empty str or health flag/build flag
+		if [ "${OPTARG}" != "" ] || [ "${opt}" == "h" ] || [ "${opt}" == "b" ]; then
+
+			case $opt in
+				R)
+					OPTREGION=$OPTARG
+					;;
+				n)
+					OPTNAME=$OPTARG
+					;;
+				p)
+					OPTPATH=$OPTARG
+					;;
+				o)
+					OPTLOGPATH=$OPTARG
+					;;
+				v)
+					OPTVERSION=$OPTARG
+					;;
+				u)
+					OPTDLURL=$OPTARG
+					;;
+				b)
+					OPTBUILDONLY="true"
+					;;
+				h)
+					usage
+					exit 0
+					;;
+				\?)
+					echo "Option ${opt} not recognized..."
+					exit 1
+			esac
+		fi
+	done
+
+	if [[ "${OPTREGION}" == "" ]]; then
+		echo "No region specified please enter a region to the -R flag"
+		exit 1
+	fi
+
+	if [[ "${OPTNAME}" == "" ]]; then
+		echo "No node name specified please enter a node name to the -n flag"
+		exit 1
+	fi
+
+	OPTPATHROOT=""
+	OPTTEMPLATEDIR=""
+	if [[ "${OPTPATH}" == "" ]]; then
+		OPTPATHROOT="/data/atlantis/elasticsearch"
+		OPTPATH="${OPTPATHROOT}/${REPO_NAME}"
+	else
+		OPTPATHROOT="${OPTPATH}"
+		OPTPATH="${OPTPATH}/${REPO_NAME}"
+	fi
+
+	OPTTEMPLATEDIR="${OPTPATH}/config/atlantis/template"
+	if [[ ! -d $OPTTEMPLATEDIR ]]; then
+		echo "Directory $OPTTEMPLATEDIR does not exist please fix config"
+		exit 1
+	fi
+	
+	#save old config isntead of overwrite
+	if [[ -f $OPTPATH/config/atlantis/atlantis.config ]]; then
+		echo "Found existing atlantis.config, renaming to avoid deletion.."
+		DATESTR=$(date +%m-%d-%y_%H-%M-%S)
+		mv $OPTPATH/config/atlantis/atlantis.config "$OPTPATH/config/atlantis/atlantis.config-${DATESTR}"
+	fi
+
+	OPTCONFPATH="${OPTPATH}/config/atlantis"	
+	OPTCONFTMPPATH="${OPTCONFPATH}/template"
+
+	#cp templte to root
+	cp "${OPTCONFTMPPATH}/atlantis.${OPTREGION}.config" "${OPTCONFPATH}/atlantis.config"
+
+	#find and replace vars in config
+	sed -i -E "s|ES_PATH=\".+?\"|ES_PATH=\"${OPTPATHROOT}\"|g" "${OPTCONFPATH}/atlantis.config"
+	sed -i -E "s|ES_PATH=\".+?\"|ES_PATH=\"${OPTPATHROOT}\"|g" "${OPTCONFPATH}/atlantis.config"
+
 
 for f in $SETUPSCRIPTS/*.sh; do
 

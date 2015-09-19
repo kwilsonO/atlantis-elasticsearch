@@ -1,0 +1,23 @@
+#Config for elastic search
+
+########################ES Install Config####################################
+
+#The path to the elasticsearch install (default /data/atlantis/elasticsearch)
+ES_PATH="/data/atlantis/elasticsearch"
+
+#The path elasticsearch will log to
+ES_LOG_PATH="/var/log/atlantis/elasticsearch"
+
+#The version of elastic search to use (default 1.7.1)
+ES_VERSION="1.7.1"
+
+#The elasticsearch download link
+ES_DL_URL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ES_VERION}.tar.gz"
+
+#######################ES Node/Cluster Config###############################
+
+#The region this install will be servicing (us-east-1, eu-west-1, etc)
+ES_REGION=""
+
+#The Node Name for this master (usually master1 or master2 or master3)
+ES_NODE_NAME=""

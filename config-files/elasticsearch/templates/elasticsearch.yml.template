@@ -29,7 +29,7 @@
 # Cluster name identifies your cluster for auto-discovery. If you're running
 # multiple clusters on the same network, make sure you're using unique names.
 #
-cluster.name: elasticsearch-atlantis
+cluster.name: @CLUSTERNAME@ 
 
 
 #################################### Node #####################################
@@ -37,7 +37,7 @@ cluster.name: elasticsearch-atlantis
 # Node names are generated dynamically on startup, so you're relieved
 # from configuring them manually. You can tie this node to a specific name:
 #
-node.name: "devbox2"
+node.name: "@NODENAME@"
 
 # Every node can be configured to allow or deny being eligible as the master,
 # and to allow or deny to store the data.
@@ -323,8 +323,7 @@ discovery.zen.ping.multicast.enabled: false
 # 2. Configure an initial list of master nodes in the cluster
 #    to perform discovery when new nodes (master or data) are started:
 #
-discovery.zen.ping.unicast.hosts: ["ec2-54-83-111-222.compute-1.amazonaws.com", "ec2-54-198-4-116.compute-1.amazonaws.com", "ec2-54-146-151-168.compute-1.amazonaws.com"]
-
+discovery.zen.ping.unicast.hosts: ["master1.elasticsearch.@REGION@.atlantis.services.ooyala.com", "master2.elasticsearch.@REGION@.atlantis.services.ooyala.com", "master3.elasticsearch.@REGION@.atlantis.services.ooyala.com"]
 
 # EC2 discovery allows to use AWS EC2 API in order to perform discovery.
 #

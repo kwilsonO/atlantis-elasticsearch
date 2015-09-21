@@ -21,3 +21,6 @@ ES_REGION=""
 
 #The Node Name for this master (usually master1 or master2 or master3)
 ES_NODE_NAME=""
+
+#The cluster Name for this elasticsearch instance (must be identical on all nodes in same cluster)
+ES_CLUSTER_NAME="elasticsearch-atlantis"

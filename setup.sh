@@ -1,4 +1,4 @@
-CONF_FILE_PATH="atlantis.config"
+CONF_FILE_PATH="config/atlantis/atlantis.config"
 REPO_NAME="atlantis-logstash"
 
 
@@ -14,6 +14,7 @@ cat <<-EOF
 		Default:
 		-R	The region this elastic search node will service (us-east-1, eu-west-1, etc)
 		-n	The node name of this node (usually master{1..3})
+		-c	The cluster name that this node is apart of (usually elasticsearch-atlantis)
 		
 		Additional:
 		-p	The path to the elasticsearch install (default /data/atlantis/elasticserach)
@@ -32,13 +33,14 @@ cat <<-EOF
 if [ $# -ne 0]; then
 	OPTREGION=""
 	OPTNAME=""
+	OPTCLUSTER=""
 	OPTPATH=""
 	OPTLOGPATH=""
 	OPTVERSION=""
 	OPTDLURL=""
 	OPTBUILDONLY=""
 
-	while getopts R:n:p:o:v:u:bh opt; do
+	while getopts R:n:c:p:o:v:u:bh opt; do
 		#if non empty str or health flag/build flag
 		if [ "${OPTARG}" != "" ] || [ "${opt}" == "h" ] || [ "${opt}" == "b" ]; then
 
@@ -85,6 +87,11 @@ if [ $# -ne 0]; then
 		exit 1
 	fi
 
+	if [[ "${OPTCLUSTER}" == "" ]]; then
+		echo "No cluster name entered please enter a cluster name to -c"
+		exit 1
+	fi
+
 	OPTPATHROOT=""
 	OPTTEMPLATEDIR=""
 	if [[ "${OPTPATH}" == "" ]]; then
@@ -102,10 +109,10 @@ if [ $# -ne 0]; then
 	fi
 	
 	#save old config isntead of overwrite
-	if [[ -f $OPTPATH/config/atlantis/atlantis.config ]]; then
+	if [[ -f $CONF_FILE_PATH ]]; then
 		echo "Found existing atlantis.config, renaming to avoid deletion.."
 		DATESTR=$(date +%m-%d-%y_%H-%M-%S)
-		mv $OPTPATH/config/atlantis/atlantis.config "$OPTPATH/config/atlantis/atlantis.config-${DATESTR}"
+		mv $CONF_FILE_PATH "$OPTPATH/config/atlantis/atlantis.config-${DATESTR}"
 	fi
 
 	OPTCONFPATH="${OPTPATH}/config/atlantis"	
@@ -121,6 +128,7 @@ if [ $# -ne 0]; then
 	sed -i -E "s|ES_DL_URL=\".+?\"|ES_DL_URL=\"${OPTDLURL}\"|g" "${OPTCONFPATH}/atlantis.config"
 	sed -i -E "s|ES_REGION=\".+?\"|ES_REGION=\"${OPTREGION}\"|g" "${OPTCONFPATH}/atlantis.config"
 	sed -i -E "s|ES_NODE_NAME=\".+?\"|ES_NODE_NAME=\"${OPTNAME}\"|g" "${OPTCONFPATH}/atlantis.config"
+	sed -i -E "s|ES_CLUSTER_NAME=\".+?\"|ES_CLUSTER_NAME=\"${OPTCLUSTER}\"|g" "${OPTCONFPATH}/atlantis.config"
 
 	if [[ "${OPTBUILDONLY}" == "true" ]]; then
 		echo "Finished building config and aborting before setup due to -b flag"

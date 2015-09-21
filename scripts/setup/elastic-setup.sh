@@ -1,17 +1,13 @@
-ESVER="elasticsearch-1.7.1"
-ESDL="https://download.elastic.co/elasticsearch/elasticsearch/${ESVER}.tar.gz"
-ESPATH="/data/elk/atlantis-elasticsearch"
-CONFDIR="${ESPATH}/config-files"
-ESDIR="${ESPATH}/${ESVER}"
-ESCONF="${ESDIR}/config"
-ATLANTISLOGDIR="/var/log/atlantis"
-ESLOGDIR="${ATLANTISLOGDIR}/elasticsearch"
+#read in config file
+source "${ES_REPO_ROOT}/atlantis.config"
 
-wget "$ESDL"
-tar -xzf "${ESVER}.tar.gz"
-rm *.gz
-rm "${ESCONF}/logging.yml"
-rm "${ESCONF}/elasticsearch.yml"
-cp "${CONFDIR}/logging.yml" "${ESCONF}/"
-mkdir "${ATLANTISLOGDIR}"
-mkdir "${ESLOGDIR}" 
+wget "$ES_DL_URL"
+tar -xzf "elasticsearch-${ES_VERSION}.tar.gz"
+rm "elasticsearch-${ES_VERSION}.tar.gz"
+rm "${ES_REPO_ROOT}/elasticsearch-${ES_VERSION}/config/logging.yml"
+rm "${ES_REPO_ROOT}elasticsearch-${ES_VERSION}/config/elasticsearch.yml"
+cp "${ES_REPO_ROOT}/config/elasticsearch/logging.yml" "${ES_REPO_ROOT}/elasticsearch-${ES_VERSION}/config/"
+
+if [[ ! -d $ES_LOG_PATH ]]; then
+	mkdir -p $ES_LOG_PATH
+fi

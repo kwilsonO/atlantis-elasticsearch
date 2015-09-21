@@ -116,11 +116,44 @@ if [ $# -ne 0]; then
 
 	#find and replace vars in config
 	sed -i -E "s|ES_PATH=\".+?\"|ES_PATH=\"${OPTPATHROOT}\"|g" "${OPTCONFPATH}/atlantis.config"
-	sed -i -E "s|ES_PATH=\".+?\"|ES_PATH=\"${OPTPATHROOT}\"|g" "${OPTCONFPATH}/atlantis.config"
+	sed -i -E "s|ES_LOG_PATH=\".+?\"|ES_LOG_PATH=\"${OPTLOGPATH}\"|g" "${OPTCONFPATH}/atlantis.config"
+	sed -i -E "s|ES_VERSION=\".+?\"|ES_VERSION=\"${OPTVERSION}\"|g" "${OPTCONFPATH}/atlantis.config"
+	sed -i -E "s|ES_DL_URL=\".+?\"|ES_DL_URL=\"${OPTDLURL}\"|g" "${OPTCONFPATH}/atlantis.config"
+	sed -i -E "s|ES_REGION=\".+?\"|ES_REGION=\"${OPTREGION}\"|g" "${OPTCONFPATH}/atlantis.config"
+	sed -i -E "s|ES_NODE_NAME=\".+?\"|ES_NODE_NAME=\"${OPTNAME}\"|g" "${OPTCONFPATH}/atlantis.config"
 
+	if [[ "${OPTBUILDONLY}" == "true" ]]; then
+		echo "Finished building config and aborting before setup due to -b flag"
+		exit 0
+	fi
+fi
+
+
+if [[ ! -f $CONF_FILE_PATH ]]; then
+		echo "No atlantis config file found, please use a pre-existing configuration or fill in the template."
+		exit 1
+fi
+
+#read in config
+echo "Reading config..."
+source $CONF_FILE_PATH
+
+
+if [[ "${ES_NODE_NAME}" == "" ]]; then
+	echo "Node name not set, please enter a node name in config and retry"
+	exit 1
+fi
+
+#export repo path/name
+export ES_REPO_ROOT="${ES_PATH}/${REPO_NAME}"
+export ES_REPO_NAME="${REPO_NAME}"
+
+
+SETUPSCRIPTS="${ES_REPO_ROOT}/scripts/setup"
 
 for f in $SETUPSCRIPTS/*.sh; do
 
-	sh $f
+	echo "Executing setup script: $f"
+	bash $f
 
 done

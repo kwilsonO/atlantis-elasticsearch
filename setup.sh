@@ -105,7 +105,7 @@ if [ $# -ne 0 ]; then
 		OPTPATH="${OPTPATH}/${REPO_NAME}"
 	fi
 
-	OPTTEMPLATEDIR="${OPTPATH}/config/atlantis/template"
+	OPTTEMPLATEDIR="${OPTPATH}/config/atlantis/templates"
 	if [[ ! -d $OPTTEMPLATEDIR ]]; then
 		echo "Directory $OPTTEMPLATEDIR does not exist please fix config"
 		exit 1
@@ -119,7 +119,7 @@ if [ $# -ne 0 ]; then
 	fi
 
 	OPTCONFPATH="${OPTPATH}/config/atlantis"	
-	OPTCONFTMPPATH="${OPTCONFPATH}/template"
+	OPTCONFTMPPATH="${OPTCONFPATH}/templates"
 
 	#cp templte to root
 	cp "${OPTCONFTMPPATH}/atlantis.${OPTREGION}.config" "${OPTCONFPATH}/atlantis.config"

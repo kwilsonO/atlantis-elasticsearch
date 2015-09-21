@@ -1,5 +1,5 @@
 #read in config file
-source "${ES_REPO_ROOT}/atlantis.config"
+source "${ES_REPO_ROOT}/config/atlantis/atlantis.config"
 
 wget "$ES_DL_URL"
 tar -xzf "elasticsearch-${ES_VERSION}.tar.gz"

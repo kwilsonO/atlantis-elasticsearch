@@ -1,5 +1,5 @@
 #read config file
-source "${ES_REPO_ROOT}/atlantis.config"
+source "${ES_REPO_ROOT}/config/atlantis/atlantis.config"
 
 ESCONFIGDIR="${ES_REPO_ROOT}/config/elasticsearch"
 NODEROOTDIR="${ES_REPO_ROOT}/elasticsearch-${ES_VERSION}"

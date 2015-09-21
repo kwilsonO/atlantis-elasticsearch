@@ -51,6 +51,9 @@ if [ $# -ne 0 ]; then
 				n)
 					OPTNAME=$OPTARG
 					;;
+				c)
+					OPTCLUSTER=$OPTARG
+					;;
 				p)
 					OPTPATH=$OPTARG
 					;;

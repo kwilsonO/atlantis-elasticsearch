@@ -122,7 +122,7 @@ if [ $# -ne 0 ]; then
 	OPTCONFTMPPATH="${OPTCONFPATH}/templates"
 
 	#cp templte to root
-	cp "${OPTCONFTMPPATH}/atlantis.${OPTREGION}.config" "${OPTCONFPATH}/atlantis.config"
+	cp "${OPTCONFTMPPATH}/atlantis.config.template" "${OPTCONFPATH}/atlantis.config"
 
 	#find and replace vars in config
 	sed -i -E "s|ES_PATH=\".+?\"|ES_PATH=\"${OPTPATHROOT}\"|g" "${OPTCONFPATH}/atlantis.config"

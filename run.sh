@@ -9,6 +9,9 @@ fi
 echo "Reading config file..."
 source "$CONF_FILE_PATH"
 
+#save start time for status check
+export ES_START_TIME="$(date +%s)"
+
 if [[ "$ES_REGION" == "" ]]; then
 	echo "Region not filled out in template, please fix config and try again."
 	exit 1

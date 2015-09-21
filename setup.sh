@@ -30,7 +30,7 @@ cat <<-EOF
 }
 
 
-if [ $# -ne 0]; then
+if [ $# -ne 0 ]; then
 	OPTREGION=""
 	OPTNAME=""
 	OPTCLUSTER=""

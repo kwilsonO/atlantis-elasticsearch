@@ -1,9 +1,9 @@
-CONF_FILE="${LS_REPO_ROOT}/config/atlantis/atlantis.config"
+CONF_FILE="${ES_REPO_ROOT}/config/atlantis/atlantis.config"
 
 #read in config
 source "$CONF_FILE"
 
-myprocid="$(ps -ef | grep "elasticsearch-${LS_VERSION}" | grep -v grep | awk '{print $2}')"
+myprocid="$(ps -ef | grep "elasticsearch-${ES_VERSION}" | grep -v grep | awk '{print $2}')"
 
 #time running math
 NOW=$(date +%s)

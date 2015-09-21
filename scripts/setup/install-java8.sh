@@ -1,4 +1,4 @@
-echo "Installing java 8 for logstash..."
+echo "Installing java 8 for elasticsearch..."
 sudo apt-get --assume-yes install -y python-software-properties debconf-utils
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get --assume-yes update

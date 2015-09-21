@@ -7,5 +7,5 @@ LOCALHOSTNAME=$(uname -n)
 
 echo "${ES_NODE_NAME} : ${LOCALHOSTNAME} Run:"
 
-echo "Starting logstash run script..."
+echo "Starting elasticsearch run script..."
 bash $ES_REPO_ROOT/run.sh

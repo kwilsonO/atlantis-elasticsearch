@@ -1,5 +1,5 @@
 CONF_FILE_PATH="atlantis.config"
-REPO_NAME="atlantis-logstash"
+REPO_NAME="atlantis-elasticsearch"
 
 if [[ ! -f $CONF_FILE_PATH ]]; then
 	echo "No atlantis config file found, use pre-made config or fill out template."

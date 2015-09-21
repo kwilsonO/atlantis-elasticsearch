@@ -1,5 +1,5 @@
 CONF_FILE_PATH="config/atlantis/atlantis.config"
-REPO_NAME="atlantis-logstash"
+REPO_NAME="atlantis-elasticsearch"
 
 
 usage()

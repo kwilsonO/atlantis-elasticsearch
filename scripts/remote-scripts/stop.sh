@@ -8,7 +8,7 @@ LOCALHOSTNAME=$(uname -n)
 echo "${ES_NAME} : ${LOCALHOSTNAME} Stop:"
 
 echo "Stopping elasticsearch..."
-myprocid="$(ps -ef | grep "elasticsearch-${LS_VERSION}" | grep -v grep | awk '{print $2}')"
+myprocid="$(ps -ef | grep "elasticsearch-${ES_VERSION}" | grep -v grep | awk '{print $2}')"
 
 if [ "${myprocid}" = "" ]; then 
 

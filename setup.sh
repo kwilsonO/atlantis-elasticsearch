@@ -1,4 +1,4 @@
-CONF_FILE_PATH="/data/atlantis/elasticsearch/atlantis-elasticsearch/config/atlantis/atlantis.config"
+CONF_FILE_PATH="config/atlantis/atlantis.config"
 REPO_NAME="atlantis-elasticsearch"
 
 

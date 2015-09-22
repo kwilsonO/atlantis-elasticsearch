@@ -1,4 +1,4 @@
-CONF_FILE_PATH="atlantis.config"
+CONF_FILE_PATH="config/atlantis/atlantis.config"
 REPO_NAME="atlantis-elasticsearch"
 
 if [[ ! -f $CONF_FILE_PATH ]]; then

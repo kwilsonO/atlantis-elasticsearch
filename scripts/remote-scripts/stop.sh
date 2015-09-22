@@ -10,7 +10,7 @@ source "${CONF_FILE}"
 
 LOCALHOSTNAME=$(uname -n)
 
-echo "${ES_NAME} : ${LOCALHOSTNAME} Stop:"
+echo "${ES_NODE_NAME} : ${LOCALHOSTNAME} Stop:"
 
 echo "Stopping elasticsearch..."
 myprocid="$(ps -ef | grep "elasticsearch-${ES_VERSION}" | grep -v grep | awk '{print $2}')"

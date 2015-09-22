@@ -10,5 +10,5 @@ source "${CONF_FILE}"
 
 LOCALHOSTNAME=$(uname -n)
 
-echo "${ES_NAME} : ${LOCALHOSTNAME} Tail-err:"
+echo "${ES_NODE_NAME} : ${LOCALHOSTNAME} Tail-err:"
 tail -n 100 $ES_LOG_PATH/err.log

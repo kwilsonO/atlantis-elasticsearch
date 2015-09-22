@@ -12,7 +12,7 @@ myprocid="$(ps -ef | grep "elasticsearch-${ES_VERSION}" | grep -v grep | awk '{p
 
 LOCALHOSTNAME=$(uname -n)
 
-echo "${ES_NAME} : ${LOCALHOSTNAME} Status:"
+echo "${ES_NODE_NAME} : ${LOCALHOSTNAME} Status:"
 
 if [ "${myprocid}" = "" ]; then 
 

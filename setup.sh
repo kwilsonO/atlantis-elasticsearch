@@ -1,4 +1,4 @@
-CONF_FILE_PATH="config/atlantis/atlantis.config"
+CONF_FILE_PATH="/data/atlantis/elasticsearch/atlantis-elasticsearch/config/atlantis/atlantis.config"
 REPO_NAME="atlantis-elasticsearch"
 
 
@@ -97,6 +97,7 @@ if [ $# -ne 0 ]; then
 	
 	OPTPATHROOT=$OPTPATH
 	OPTPATH="${OPTPATH}/${REPO_NAME}"
+	CONF_FILE_PATH="${OPTPATH}/config/atlantis/atlantis.config"
 	OPTTEMPLATEDIR="${OPTPATH}/config/atlantis/templates"
 	if [[ ! -d $OPTTEMPLATEDIR ]]; then
 		echo "Directory $OPTTEMPLATEDIR does not exist please fix config"

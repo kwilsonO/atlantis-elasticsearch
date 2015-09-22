@@ -33,11 +33,11 @@ cat <<-EOF
 if [ $# -ne 0 ]; then
 	OPTREGION=""
 	OPTNAME=""
-	OPTCLUSTER=""
-	OPTPATH=""
-	OPTLOGPATH=""
-	OPTVERSION=""
-	OPTDLURL=""
+	OPTCLUSTER="atlantis-elasticsearch"
+	OPTPATH="/data/atlantis/elasticsearch"
+	OPTLOGPATH="/var/log/atlantis/elasticsearch"
+	OPTVERSION="1.7.1"
+	OPTDLURL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-\${ES_VERION}.tar.gz"
 	OPTBUILDONLY=""
 
 	while getopts R:n:c:p:o:v:u:bh opt; do

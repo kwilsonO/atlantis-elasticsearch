@@ -41,7 +41,8 @@ export ES_REPO_NAME="${REPO_NAME}"
 RUNSCRIPTS="${ES_REPO_ROOT}/scripts/run"
 for f in $RUNSCRIPTS/*.sh; do
 
-	sh $f
+	echo "Running elasticsearch runscript: $f..."
+	bash $f
 
 done
 

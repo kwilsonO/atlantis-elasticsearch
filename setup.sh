@@ -37,7 +37,7 @@ if [ $# -ne 0 ]; then
 	OPTPATH="/data/atlantis/elasticsearch"
 	OPTLOGPATH="/var/log/atlantis/elasticsearch"
 	OPTVERSION="1.7.1"
-	OPTDLURL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-\${ES_VERION}.tar.gz"
+	OPTDLURL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-\${ES_VERSION}.tar.gz"
 	OPTBUILDONLY=""
 
 	while getopts R:n:c:p:o:v:u:bh opt; do

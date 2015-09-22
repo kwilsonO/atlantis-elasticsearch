@@ -12,7 +12,7 @@ ES_LOG_PATH="/var/log/atlantis/elasticsearch"
 ES_VERSION="1.7.1"
 
 #The elasticsearch download link
-ES_DL_URL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ES_VERION}.tar.gz"
+ES_DL_URL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ES_VERSION}.tar.gz"
 
 #######################ES Node/Cluster Config###############################
 

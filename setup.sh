@@ -32,7 +32,7 @@ cat <<-EOF
 
 if [ $# -ne 0 ]; then
 	OPTREGION=""
-	OPTNAME=""
+	OPTNAME="$(uname -n)"
 	OPTCLUSTER="atlantis-elasticsearch"
 	OPTPATH="/data/atlantis/elasticsearch"
 	OPTLOGPATH="/var/log/atlantis/elasticsearch"

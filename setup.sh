@@ -94,17 +94,9 @@ if [ $# -ne 0 ]; then
 		echo "No cluster name entered please enter a cluster name to -c"
 		exit 1
 	fi
-
-	OPTPATHROOT=""
-	OPTTEMPLATEDIR=""
-	if [[ "${OPTPATH}" == "" ]]; then
-		OPTPATHROOT="/data/atlantis/elasticsearch"
-		OPTPATH="${OPTPATHROOT}/${REPO_NAME}"
-	else
-		OPTPATHROOT="${OPTPATH}"
-		OPTPATH="${OPTPATH}/${REPO_NAME}"
-	fi
-
+	
+	OPTPATHROOT=$OPTPATH
+	OPTPATH="${OPTPATH}/${REPO_NAME}"
 	OPTTEMPLATEDIR="${OPTPATH}/config/atlantis/templates"
 	if [[ ! -d $OPTTEMPLATEDIR ]]; then
 		echo "Directory $OPTTEMPLATEDIR does not exist please fix config"

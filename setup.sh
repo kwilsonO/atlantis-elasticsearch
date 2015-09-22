@@ -1,4 +1,11 @@
-CONF_FILE_PATH="config/atlantis/atlantis.config"
+#if a single arg then it's the path to config
+CONF_FILE_PATH=""
+if [ $# -eq 1 ]; then
+	CONF_FILE_PATH="$1"
+else
+	CONF_FILE_PATH="/data/atlantis/elasticsearch/atlantis-elasticsearch/config/atlantis/atlantis.config"
+fi
+
 REPO_NAME="atlantis-elasticsearch"
 
 
